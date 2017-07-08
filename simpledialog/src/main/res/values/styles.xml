@@ -1,0 +1,66 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#333333</item>
+        <item name="colorPrimaryDark">#222222</item>
+        <item name="colorAccent">#999999</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="TransparentDialogTheme" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="@android:windowBackground">@android:color/transparent</item>
+        <item name="@android:colorAccent">#ffffff</item>
+        <item name="@android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="@android:windowExitAnimation">@android:anim/slide_out_right</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!--<style name="Theme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:backgroundDimEnabled">true</item>-->
+        <!--<item name="android:windowFullscreen">false</item>-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+    <!--<style name="FullscreenTheme" parent="AppTheme">-->
+        <!--<item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>-->
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+        <!--<item name="android:windowBackground">@null</item>-->
+        <!--<item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>-->
+        <!--<item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>-->
+    <!--</style>-->
+
+    <!--<style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">-->
+        <!--<item name="android:background">@color/black_overlay</item>-->
+    <!--</style>-->
+
+    <style name="checkBoxStyle" parent="AppTheme">
+        <item name="colorAccent">#000000</item>
+        <item name="android:textColorSecondary">#000000</item>
+    </style>
+
+    <!--<style name="MenuFavoriteTabText" parent="TextAppearance.Design.Tab">-->
+        <!--<item name="android:textSize">17dp</item>-->
+        <!--<item name="android:textColor">#000000</item>-->
+        <!--<item name="android:textStyle">bold</item>-->
+    <!--</style>-->
+
+</resources>

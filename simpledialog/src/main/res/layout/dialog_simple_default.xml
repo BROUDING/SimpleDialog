@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_container"
+    android:background="#08000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08" />
+
+        <LinearLayout
+            android:id="@+id/layout_dialog"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.84"
+            android:background="@drawable/bg_round_white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="22dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_header"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="1dp"
+                    android:text="Header :)"
+                    android:textColor="#333333"
+                    android:textSize="19dp" />
+
+                <TextView
+                    android:id="@+id/txt_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:gravity="center_vertical"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="0dp"
+                    android:text="Hello World !"
+                    android:textColor="#777777"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/image_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:padding="18dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/image_guide_pinch"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_weight="0.2"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:orientation="horizontal">
+                
+                <LinearLayout
+                    android:id="@+id/btn_check_permanent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/btn_selector"
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start">
+
+                    <CheckBox
+                        android:id="@+id/check_permanent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/checkBoxStyle"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textSize="13dp"
+                        android:text="Don't show again"/>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_gap"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_selector"
+                    android:layout_gravity="right" >
+
+                    <TextView
+                        android:id="@+id/text_btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:textColor="#999999"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_okay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_selector"
+                    android:layout_gravity="right" >
+
+                    <TextView
+                        android:id="@+id/text_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08" />
+
+    </LinearLayout>
+
+</LinearLayout>
