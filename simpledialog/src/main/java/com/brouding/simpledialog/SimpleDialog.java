@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,7 +32,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
     private SharedPreferences mPreferences;
     private Builder builder;
 
-    public enum ButtonAction {
+    public enum BtnAction {
         CONFIRM,
         CANCEL,
         DIALOG_INSIDE,
@@ -39,7 +40,11 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
     }
 
     private void setTitle(String message) {
-        TextView txtTitle = (TextView) transitionsContainer.findViewById(R.id.txt_header);
+        TextView txtTitle = (TextView) transitionsContainer.findViewById(R.id.txt_title);
+
+        if( builder.isTitleBold )
+            txtTitle.setTypeface(null, Typeface.BOLD);
+
         txtTitle.setVisibility(View.VISIBLE);
         txtTitle.setText(message);
     }
@@ -47,6 +52,20 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
     private void setContent(String message) {
         TextView txtContent = (TextView) transitionsContainer.findViewById(R.id.txt_content);
         txtContent.setText(message);
+    }
+
+    private void setBtnConfirm() {
+        TextView txtConfirm = (TextView) btnConfirm.findViewById(R.id.text_btn);
+        txtConfirm.setText(builder.confirmText);
+
+        if( builder.confirmTextColor > 0 )
+            txtConfirm.setTextColor( ContextCompat.getColor(builder.context, builder.confirmTextColor) );
+
+        if( builder.isConfirmTextBold )
+            txtConfirm.setTypeface(null, Typeface.BOLD);
+
+        btnConfirm.setTag(BtnAction.CONFIRM);
+        btnConfirm.setOnClickListener(this);
     }
 
     private void setBtnCancel() {
@@ -58,27 +77,21 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
         if( builder.cancelTextColor > 0 )
             txtCancel.setTextColor(ContextCompat.getColor(builder.context, builder.cancelTextColor));
 
+        if( builder.isCancelTextBold )
+            txtCancel.setTypeface(null, Typeface.BOLD);
+
         txtCancel.setText(builder.cancelText);
 
-        btnCancel.setTag(ButtonAction.CANCEL);
+        btnCancel.setTag(BtnAction.CANCEL);
         btnCancel.setOnClickListener(this);
-    }
-
-    private void setBtnConfirm() {
-        TextView txtConfirm = (TextView) btnConfirm.findViewById(R.id.text_btn);
-        txtConfirm.setText(builder.confirmText);
-
-        if( builder.confirmTextColor > 0 )
-            txtConfirm.setTextColor( ContextCompat.getColor(builder.context, builder.confirmTextColor) );
-
-        btnConfirm.setTag(ButtonAction.CONFIRM);
-        btnConfirm.setOnClickListener(this);
     }
 
 	private void setProgressBar(Context context) {
         ImageView progressGif = (ImageView) transitionsContainer.findViewById(R.id.image_loading);
         progressGif.setVisibility(View.VISIBLE);
-        Glide.with(context).load(R.raw.loading_default).into(progressGif);
+
+        Object customProgressGIF = builder.customProgressGIF;
+        Glide.with(context).load(customProgressGIF==null ? R.raw.loading_default : customProgressGIF).into(progressGif);
 	}
 
     @UiThread
@@ -100,7 +113,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
                     TransitionManager.beginDelayedTransition(transitionsContainer);
                     btnCancel.setVisibility(View.VISIBLE);
                 }
-            }, 2500);
+            }, builder.btnCancelShowTime);
 
             if( builder.cancelText != null ) {
                 setBtnCancel();
@@ -123,13 +136,13 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
                 }
             });
 
-            if( builder.textTitle.length() > 0 ) {
+            if( builder.textTitle != null ) {
                 setTitle(builder.textTitle);
             }
 
-            if( builder.imageId > 0 ) {
+            if( builder.guideImageId > 0 ) {
                 imageGuide.setVisibility(View.VISIBLE);
-                imageGuide.setImageResource( builder.imageId );
+                imageGuide.setImageResource( builder.guideImageId );
             }
 
             if( builder.cancelText != null ) {
@@ -149,7 +162,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
         }
 
         setContent(builder.textContent);
-        dialog.setCancelable(builder.cancelable);
+        dialog.setCancelable(builder.isCancelable);
 
         if( builder.dismissListener != null ) {
             dialog.setOnDismissListener(builder.dismissListener);
@@ -159,14 +172,18 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
             dialog.setOnCancelListener(builder.cancelListener);
         }
 
-        if( builder.cancelableOnTouchOutside ) {
+        if( builder.isCancelableOnTouchOutside ) {
             LinearLayout layoutDialog = (LinearLayout) transitionsContainer.findViewById(R.id.layout_dialog);
-            layoutDialog.setTag(ButtonAction.DIALOG_INSIDE);
+            layoutDialog.setTag(BtnAction.DIALOG_INSIDE);
             layoutDialog.setOnClickListener(this);
 
-            transitionsContainer.setTag(ButtonAction.DIALOG_OUTSIDE);
+            transitionsContainer.setTag(BtnAction.DIALOG_OUTSIDE);
             transitionsContainer.setOnClickListener(this);
         }
+    }
+
+    public Object getTag() {
+        return builder.tag;
     }
 
     @SuppressLint("InflateParams")
@@ -193,7 +210,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public final void onClick(View v) {
-        ButtonAction tag = (ButtonAction) v.getTag();
+        BtnAction tag = (BtnAction) v.getTag();
         switch (tag) {
             case CONFIRM:
                 permanentCheck();
@@ -215,7 +232,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
                 break;
         }
 
-        if( !tag.equals(ButtonAction.DIALOG_INSIDE) && this.isShowing() )
+        if( !tag.equals(BtnAction.DIALOG_INSIDE) && this.isShowing() )
             dismiss();
     }
 
@@ -236,34 +253,40 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void dismiss() {
-        super.dismiss();
+        if( this.isShowing() )
+            super.dismiss();
     }
 
     /** An alternate way to define a single callback. */
-    public interface SingleButtonCallback {
-        void onClick(@NonNull SimpleDialog dialog, @NonNull ButtonAction which);
+    public interface BtnCallback {
+        void onClick(@NonNull SimpleDialog dialog, @NonNull BtnAction which);
     }
 
     @SuppressWarnings({"WeakerAccess", "unused"})
     public static class Builder {
-        protected final Context context;
-        protected String textTitle="", textContent="";
-        protected String confirmText = null;
-        protected String neutralText = null;
-        protected String cancelText  = null;
-        protected SingleButtonCallback onConfirmCallback = null;
-        protected SingleButtonCallback onCancelCallback = null;
+        protected final Context  context;
+        protected BtnCallback    onConfirmCallback = null, onCancelCallback = null;
         protected OnShowListener showListener;
         protected OnDismissListener dismissListener = null;
         protected OnCancelListener  cancelListener  = null;
-        protected boolean cancelable = false;
-        protected boolean cancelableOnTouchOutside = false;
-
-        protected boolean showProgress = false;
-        protected String  preferenceName = null, permanentCheckKey = null;
-        protected int imageId = 0, confirmTextColor=0, cancelTextColor=0;
-
-        protected Object tag;
+        protected boolean isCancelable = false,
+                          isCancelableOnTouchOutside = false,
+                          showProgress = false,
+                          isTitleBold  = false,
+                          isConfirmTextBold = false,
+                          isCancelTextBold  = false;
+        protected int     btnCancelShowTime = 2500,
+                          guideImageId = 0,
+                          confirmTextColor = 0,
+                          cancelTextColor  = 0;
+        protected String  textTitle   = null,
+                          textContent = null,
+                          confirmText = null,
+                          cancelText  = null,
+                          preferenceName = null,
+                          permanentCheckKey = null;
+        protected Object  tag,
+                          customProgressGIF = null;
 
         public Builder(@NonNull Context context) {
             this.context = context;
@@ -273,73 +296,76 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
             return context;
         }
 
-        public Builder title(@NonNull String message) {
+        public Builder setTitle(String message, boolean isBold) {
             this.textTitle = message;
+            this.isTitleBold = isBold;
             return this;
         }
 
-        public Builder content(@NonNull String message) {
+        public Builder setContent(@NonNull String message) {
             this.textContent = message;
             return this;
         }
 
-        public Builder btnConfirmText(@NonNull String message) {
+        public Builder setBtnConfirmText(@NonNull String message, boolean isBold) {
             this.confirmText = message;
+            this.isConfirmTextBold = isBold;
             return this;
         }
 
-        public Builder btnConfirmTextColor(@NonNull int color) {
+        public Builder setBtnConfirmTextColor(int color) {
             this.confirmTextColor = color;
             return this;
         }
 
-        public Builder btnNeutralText(@NonNull String message) {
-            this.neutralText = message;
-            return this;
-        }
-
-        public Builder btnCancelText(@NonNull String message) {
-            this.cancelText = message;
-            return this;
-        }
-
-        public Builder btnCancelTextColor(@NonNull int color) {
-            this.cancelTextColor = color;
-            return this;
-        }
-
-        public Builder onConfirm(@NonNull SingleButtonCallback callback) {
+        public Builder onConfirm(BtnCallback callback) {
             this.onConfirmCallback = callback;
             return this;
         }
 
-        public Builder onCancel(@NonNull SingleButtonCallback callback) {
+        public Builder setBtnCancelText(String message, boolean isBold) {
+            this.cancelText = message;
+            this.isCancelTextBold = isBold;
+            return this;
+        }
+
+        public Builder setBtnCancelShowTime(int btnCancelShowTime) {
+            this.btnCancelShowTime = btnCancelShowTime;
+            return this;
+        }
+
+        public Builder setBtnCancelTextColor(int color) {
+            this.cancelTextColor = color;
+            return this;
+        }
+
+        public Builder setCancelable(boolean isCancelable) {
+            this.isCancelable = isCancelable;
+            this.isCancelableOnTouchOutside = isCancelable;
+            return this;
+        }
+
+        public Builder setCancelableOnTouchOutside(boolean isCancelableOnTouchOutside) {
+            this.isCancelableOnTouchOutside = isCancelableOnTouchOutside;
+            return this;
+        }
+
+        public Builder onCancel(BtnCallback callback) {
             this.onCancelCallback = callback;
             return this;
         }
 
-        public Builder cancelable(boolean cancelable) {
-            this.cancelable = cancelable;
-            this.cancelableOnTouchOutside = cancelable;
+        public Builder setGuideImage(int imageId) {
+            this.guideImageId = imageId;
             return this;
         }
 
-        public Builder cancelableOnTouchOutside(boolean canceledOnTouchOutside) {
-            this.cancelableOnTouchOutside = canceledOnTouchOutside;
-            return this;
-        }
-
-        public Builder guideImage(int imageId) {
-            this.imageId = imageId;
-            return this;
-        }
-
-        public Builder preferenceName(String preferenceName) {
+        public Builder setPreferenceName(String preferenceName) {
             this.preferenceName = preferenceName;
             return this;
         }
 
-        public Builder permanentCheckKey(String preferenceKey) {
+        public Builder setPermanentCheckKey(String preferenceKey) {
             this.permanentCheckKey = preferenceKey;
             return this;
         }
@@ -349,7 +375,13 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
             return this;
         }
 
-        public Builder showListener(@NonNull OnShowListener listener) {
+        public Builder setProgressGIF(Object customProgressGIF) {
+            this.showProgress      = true;
+            this.customProgressGIF = customProgressGIF;
+            return this;
+        }
+
+        public Builder onShowListener(@NonNull OnShowListener listener) {
             this.showListener = listener;
             return this;
         }
@@ -364,7 +396,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
             return this;
         }
 
-        public Builder tag(@Nullable Object tag) {
+        public Builder setTag(@Nullable Object tag) {
             this.tag = tag;
             return this;
         }

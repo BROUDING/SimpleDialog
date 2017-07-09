@@ -14,13 +14,13 @@
         android:orientation="horizontal">
 
         <View
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.08" />
 
         <LinearLayout
             android:id="@+id/layout_dialog"
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.84"
             android:background="@drawable/bg_round_white"
@@ -35,7 +35,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_header"
+                    android:id="@+id/txt_title"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,7 +168,7 @@
         </LinearLayout>
 
         <View
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.08" />
 

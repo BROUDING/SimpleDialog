@@ -13,15 +13,15 @@
         android:orientation="horizontal">
 
         <View
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1" />
+            android:layout_weight="0.08" />
 
         <LinearLayout
             android:id="@+id/layout_dialog"
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.84"
             android:background="@drawable/bg_round_white"
             android:padding="20dp"
             android:gravity="center_vertical"
@@ -34,7 +34,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:layout_weight="0.9"
                 android:gravity="center_vertical"
-                android:text="관심아파트가 많을 경우\n오래 걸릴 수 있습니다."
+                android:text="Loading..."
                 android:textColor="@color/white_background_txt"
                 android:textSize="15dp" />
 
@@ -51,6 +51,7 @@
                 android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
                 android:visibility="gone"
                 android:orientation="horizontal">
 
@@ -77,9 +78,9 @@
         </LinearLayout>
 
         <View
-            android:layout_width="1px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1" />
+            android:layout_weight="0.08" />
 
     </LinearLayout>
 

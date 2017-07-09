@@ -3,7 +3,7 @@ apply plugin: 'com.novoda.bintray-release'
 
 publish {
     userOrg = 'brouding'
-    groupId = 'com.brouding.simpledialog'
+    groupId = 'com.brouding'
     artifactId = 'android-simple-dialog'
     publishVersion = '0.1.0'
     desc = 'Android Simple Dialog'
