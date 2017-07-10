@@ -1,4 +1,4 @@
-# Simple Dialog [![Platform](https://img.shields.io/badge/Platform-Android-green.svg) ]()[![Download](https://api.bintray.com/packages/brouding/maven/android-simple-dialog/images/download.svg) ](https://bintray.com/brouding/maven/android-simple-dialog/_latestVersion)[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/brouding/simpledialog/blob/master/LICENSE.txt)
+# Simple Dialog [![Platform](https://img.shields.io/badge/Platform-Android-green.svg) ]()[![Download](https://api.bintray.com/packages/brouding/maven/android-simple-dialog/images/download.svg) ](https://bintray.com/brouding/maven/android-simple-dialog/_latestVersion)[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/brouding/simpledialog/blob/master/LICENSE.txt) [![Build Status](https://travis-ci.org/BROUDING/SimpleDialog.svg?branch=master)](https://travis-ci.org/BROUDING/SimpleDialog)
 
 Simple and easy Android Dialog by BROUDING
 

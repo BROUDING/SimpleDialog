@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.84"
             android:background="@drawable/bg_round_white"
-            android:padding="20dp"
+            android:padding="15dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -48,10 +48,9 @@
                 android:gravity="center_vertical"/>
 
             <LinearLayout
-                android:id="@+id/btn_cancel"
+                android:id="@+id/layout_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_selector"
                 android:visibility="gone"
                 android:orientation="horizontal">
 
@@ -60,18 +59,31 @@
                     android:layout_height="match_parent"
                     android:background="#666666" />
 
-                <TextView
-                    android:id="@+id/text_btn_cancel"
+                <LinearLayout
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="center"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:textColor="#666666"
-                    android:textSize="14dp"
-                    android:text="취소"/>
+                    android:background="@drawable/btn_selector"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center"
+                        android:textColor="#666666"
+                        android:textSize="14dp"
+                        android:text="취소"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

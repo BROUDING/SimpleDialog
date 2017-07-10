@@ -19,14 +19,15 @@ public class SampleActivity extends AppCompatActivity {
         mDialog = new SimpleDialog.Builder(this)
                 .setTitle("Header !", false)
                 .setContent("Hello World !\nThis is Simple Dialog :)")
-//                .setCancelable(false)
-//                .showProgress(true)
+                .setCancelable(true)
+                .showProgress(true)
 //                .setProgressGIF(R.raw.loading_default)
 //                .setBtnCancelShowTime(500)
 //                .setPreferenceName(mPreferenceName)
 //                .setPermanentCheckKey("Sample01_check")
 //                .setGuideImage(R.drawable.image_guide_pinch)
-                .setBtnCancelText("Cancel", false)
+                .setBtnCancelText("Cancel", true)
+                .setBtnCancelTextColor(R.color.colorPrimary)
                 .onCancel(new SimpleDialog.BtnCallback() {
                     @Override
                     public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {

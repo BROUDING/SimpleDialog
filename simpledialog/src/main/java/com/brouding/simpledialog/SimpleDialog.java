@@ -26,7 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
 // FIXME: NAME... SimpleDialog?  Because it has only 2 options that 'MUST HAVE OPTIONS'
 public class SimpleDialog extends Dialog implements View.OnClickListener {
     private ViewGroup    transitionsContainer;
-    private LinearLayout btnConfirm, btnCancel;
+    private LinearLayout btnConfirm, btnCancel, layoutCancel;
     private CheckBox     checkbox;
 
     private SharedPreferences mPreferences;
@@ -71,7 +71,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
     private void setBtnCancel() {
         TextView txtCancel = (TextView) btnCancel.findViewById(R.id.text_btn_cancel);
 
-        if (!builder.showProgress)
+        if( !builder.showProgress )
             btnCancel.setVisibility(View.VISIBLE);
 
         if( builder.cancelTextColor > 0 )
@@ -102,6 +102,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
             setContentView(R.layout.dialog_simple_progress);
 
             transitionsContainer = (ViewGroup) findViewById(R.id.layout_container);
+            layoutCancel = (LinearLayout) transitionsContainer.findViewById(R.id.layout_cancel);
             btnCancel    = (LinearLayout) transitionsContainer.findViewById(R.id.btn_cancel);
 
             setProgressBar(builder.context);
@@ -111,7 +112,7 @@ public class SimpleDialog extends Dialog implements View.OnClickListener {
                 @Override
                 public void run() {
                     TransitionManager.beginDelayedTransition(transitionsContainer);
-                    btnCancel.setVisibility(View.VISIBLE);
+                    layoutCancel.setVisibility(View.VISIBLE);
                 }
             }, builder.btnCancelShowTime);
 

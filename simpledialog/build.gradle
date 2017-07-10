@@ -5,7 +5,7 @@ publish {
     userOrg = 'brouding'
     groupId = 'com.brouding'
     artifactId = 'android-simple-dialog'
-    publishVersion = '0.1.0'
+    publishVersion = '0.2.5'
     desc = 'Android Simple Dialog'
     website = 'https://github.com/BROUDING/SimpleDialog'
     issueTracker = "https://github.com/BROUDING/SimpleDialog/issues"
@@ -13,12 +13,12 @@ publish {
 }
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
