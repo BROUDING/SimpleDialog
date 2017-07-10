@@ -18,7 +18,7 @@ public class SampleActivity extends AppCompatActivity {
 
         mDialog = new SimpleDialog.Builder(this)
                 .setTitle("Header !", false)
-                .setContent("Hello World !\nThis is Simple Dialog :)")
+                .setContent("Hello World !")
                 .setCancelable(true)
                 .showProgress(true)
 //                .setProgressGIF(R.raw.loading_default)
