@@ -1,11 +1,43 @@
-# Simple Dialog [![Platform](https://img.shields.io/badge/Platform-Android-green.svg) ]()[![Download](https://api.bintray.com/packages/brouding/maven/android-simple-dialog/images/download.svg) ](https://bintray.com/brouding/maven/android-simple-dialog/_latestVersion)[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/brouding/simpledialog/blob/master/LICENSE.txt) [![Build Status](https://travis-ci.org/BROUDING/SimpleDialog.svg?branch=master)](https://travis-ci.org/BROUDING/SimpleDialog)
+# Simple Dialog [![Platform](https://img.shields.io/badge/Platform-Android-green.svg) ]()[![Build Status](https://travis-ci.org/BROUDING/SimpleDialog.svg?branch=master)](https://travis-ci.org/BROUDING/SimpleDialog) [![Download](https://api.bintray.com/packages/brouding/maven/android-simple-dialog/images/download.svg) ](https://bintray.com/brouding/maven/android-simple-dialog/_latestVersion)[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/brouding/simpledialog/blob/master/LICENSE.txt)
 
 Simple and easy Android Dialog by BROUDING
+
+![Sample Video](https://github.com/BROUDING/SimpleDialog/blob/master/sample/sample_video.gif?raw=true)
+
+# Sample .apk
+
+You can download the latest sample APK from this repo here: https://github.com/brouding/SimpleDialog/blob/master/sample/SimpleDialogSample.apk
+
+---
+# Gradle Dependency
+### Repository
+The Gradle dependency is available via [jCenter](https://bintray.com/brouding/maven/android-simple-dialog).
+jCenter is the default Maven repository used by Android Studio.
+
+The minimum API level supported by this library is API 14, Android 4.0 (ICE_CREAM_SANDWICH)
+
+
+### Import to your project
+add below code in `build.gradle (Module: app)`
+```gradle
+dependencies {
+	// ... other dependencies here
+    compile 'com.brouding:android-simple-dialog:0.2.4'
+}
+```
+
+---
+
+
+
 
 License
 -------
 
     Copyright 2017 SimpleDialog authors.
+
+		- Jeongwon Lee (ssyjk2@gmail.com)
+
     All rights reserved.
 
     Licensed under the Apache License, Version 2.0 (the "License");

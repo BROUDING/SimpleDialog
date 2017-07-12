@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.84"
-            android:background="@drawable/bg_round_white"
+            android:background="@drawable/brouding_simple_dialog_bg_round_white"
             android:orientation="vertical">
 
             <LinearLayout
@@ -65,8 +65,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:padding="18dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/image_guide_pinch"/>
+                android:scaleType="fitCenter"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,7 +87,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:gravity="center_vertical"
-                    android:background="@drawable/btn_selector"
+                    android:background="@drawable/brouding_simple_dialog_btn_selector"
                     android:visibility="gone"
                     android:orientation="horizontal"
                     android:layout_gravity="start">
@@ -100,6 +99,7 @@
                         android:theme="@style/checkBoxStyle"/>
 
                     <TextView
+                        android:id="@+id/text_btn_permanent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -127,7 +127,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:gravity="center"
-                    android:background="@drawable/btn_selector"
+                    android:background="@drawable/brouding_simple_dialog_btn_selector"
                     android:layout_gravity="right" >
 
                     <TextView
@@ -149,7 +149,7 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:gravity="center"
-                    android:background="@drawable/btn_selector"
+                    android:background="@drawable/brouding_simple_dialog_btn_selector"
                     android:layout_gravity="right" >
 
                     <TextView
@@ -158,8 +158,7 @@
                         android:layout_height="wrap_content"
                         android:text="Check"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 

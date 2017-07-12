@@ -53,8 +53,8 @@
     <!--</style>-->
 
     <style name="checkBoxStyle" parent="AppTheme">
-        <item name="colorAccent">#000000</item>
-        <item name="android:textColorSecondary">#000000</item>
+        <item name="colorAccent">#555555</item>
+        <item name="android:textColorSecondary">#555555</item>
     </style>
 
     <!--<style name="MenuFavoriteTabText" parent="TextAppearance.Design.Tab">-->

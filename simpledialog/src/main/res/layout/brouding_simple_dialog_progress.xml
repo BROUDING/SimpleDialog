@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.84"
-            android:background="@drawable/bg_round_white"
+            android:background="@drawable/brouding_simple_dialog_bg_round_white"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:paddingLeft="15dp"
@@ -58,15 +58,15 @@
                 android:orientation="horizontal">
 
                 <View
-                    android:layout_width="1dp"
+                    android:layout_width="1px"
                     android:layout_height="match_parent"
-                    android:background="#666666" />
+                    android:background="#333333" />
 
                 <LinearLayout
                     android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_selector"
+                    android:background="@drawable/brouding_simple_dialog_btn_selector"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
                     android:orientation="horizontal">
