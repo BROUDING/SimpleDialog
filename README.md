@@ -5,10 +5,9 @@ Simple and easy Android Dialog by BROUDING
 ![Sample Video](https://github.com/BROUDING/SimpleDialog/blob/master/sample/sample_video.gif?raw=true)
 
 # Sample .apk
-
 You can download the latest sample APK from this repo here: https://github.com/brouding/SimpleDialog/blob/master/sample/SimpleDialogSample.apk
 
----
+
 # Gradle Dependency
 ### Repository
 The Gradle dependency is available via [jCenter](https://bintray.com/brouding/maven/android-simple-dialog).
@@ -26,11 +25,93 @@ dependencies {
 }
 ```
 
+# How to use (Wiki will be updated !)
+### SimpleDialog - Basic
+```java
+new SimpleDialog.Builder(thisActivity)
+                .setContent("This is basic SimpleDialog :)")
+                .setBtnConfirmText("Check!")
+                .setBtnConfirmTextColor("#de413e")
+		
+                // Customizing (You can find more in Wiki)
+		
+                //.setTitle("Hello !", true)	// setTitle(String message, boolean isBold)
+                //.setCancelable(true)          // Default value is false
+                //.onConfirm(new SimpleDialog.BtnCallback() {
+                //    @Override
+                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                //        // Do something
+                //    }
+                //})
+                //.setBtnCancelText("Cancel", false)	// setBtnCancelText(String message, boolean isBold)
+                //.onCancel(new SimpleDialog.BtnCallback() {
+                //    @Override
+                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                //        // Do something
+                //    }
+                //})
+                .show();  // Must be called at the end
+```
+
+### SimpleDialog - Progress
+```java
+new SimpleDialog.Builder(thisActivity)
+		// I thought ProgressDialog doesn't need setTitle, it's unavailable unless there're requests
+                .setContent("This is progress SimpleDialog :)")
+                .setProgressGIF(R.raw.simple_dialog_progress_default)	// If you use this, setProgress(true) is not necessary
+                .setBtnCancelText("Cancel")
+                .setBtnCancelTextColor("#2861b0")
+		
+                // Customizing (You can find more in Wiki)
+		
+                //.setBtnCancelText("Cancel", false)	// setBtnCancelText(String message, boolean isBold)
+                //.setBtnCancelTextColor(R.color.colorPrimary)
+                //.setBtnCancelShowTime(2000)
+                //.onCancel(new SimpleDialog.BtnCallback() {
+                //    @Override
+                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                //        // thisActivity.finish();
+                //    }
+                //})
+                //.showProgress(true)
+                .show();  // Must be called at the end
+```
+
+### SimpleDialog - Guide
+```java
+new SimpleDialog.Builder(thisActivity)
+                .setTitle("Hello !")      // Default text will be set Bold, Not necessary
+                .setContent("This is guide SimpleDialog :)\n\n- You can pinch the view !")
+                .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
+                .setGuideImageSizeDp(150, 150)
+                .setPreferenceName(Pref.PREFERENCE_NAME)
+                .setPermanentCheckKey(Pref.KEY_FIRST_WELCOME)
+                .onConfirmWithPermanentCheck(new SimpleDialog.BtnCallback() {
+                    @Override
+                    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                        setBtnGuideReset(true);
+                    }
+                })
+		// I thought cancel button is not necessary, it's unavailable unless there're requests
+                .setBtnConfirmText("Check!")
+                .setBtnConfirmTextColor("#e6b115")
+		
+                // Customizing (You can find more in Wiki)
+		
+                //.setTitle("Hello !", false)
+                //.setBtnPermanentCheckText("Don't show again", true)
+                //.setGuideImagePaddingDp(10)
+                //.setGuideImageSizeDp(100, 100)
+		//.onConfirm(new SimpleDialog.BtnCallback() {
+                //    @Override
+                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                //        // Do something
+                //    }
+                //})
+		// If permanentCheck is unnecessary, you can use >> .show();
+                .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
+```
 ---
-
-
-
-
 License
 -------
 
