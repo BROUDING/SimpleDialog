@@ -22,7 +22,7 @@ add below code in `build.gradle (Module: app)`
 ```gradle
 dependencies {
 	// ... other dependencies here
-    compile 'com.brouding:android-simple-dialog:0.2.4'
+    compile 'com.brouding:android-simple-dialog:0.2.4.2'
 }
 ```
 

@@ -5,7 +5,7 @@ publish {
     userOrg = 'brouding'
     groupId = 'com.brouding'
     artifactId = 'android-simple-dialog'
-    publishVersion = '0.2.4'
+    publishVersion = '0.2.4.2'
     desc = 'Android Simple Dialog'
     website = 'https://github.com/BROUDING/SimpleDialog'
     issueTracker = "https://github.com/BROUDING/SimpleDialog/issues"
@@ -13,12 +13,12 @@ publish {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION as String
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
 
@@ -42,7 +42,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:${SUPPORT_V7_VERSION}"
     compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
     compile 'com.andkulikov:transitionseverywhere:1.7.4'
     testCompile 'junit:junit:4.12'

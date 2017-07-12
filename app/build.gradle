@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION as String
     defaultConfig {
         applicationId "com.brouding.simpledialogsample"
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,7 +29,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile "com.android.support:appcompat-v7:${SUPPORT_V7_VERSION}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.andkulikov:transitionseverywhere:1.7.4'
     compile 'com.brouding:android-block-button:0.1.1'
