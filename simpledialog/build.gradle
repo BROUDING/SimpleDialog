@@ -5,7 +5,7 @@ publish {
     userOrg = 'brouding'
     groupId = 'com.brouding'
     artifactId = 'android-simple-dialog'
-    publishVersion = '0.2.4.2'
+    publishVersion = '0.2.5.1'
     desc = 'Android Simple Dialog'
     website = 'https://github.com/BROUDING/SimpleDialog'
     issueTracker = "https://github.com/BROUDING/SimpleDialog/issues"

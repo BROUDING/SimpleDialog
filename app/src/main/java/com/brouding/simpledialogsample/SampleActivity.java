@@ -43,6 +43,12 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
         BlockButton btnShowGuideDialog = (BlockButton) layoutMain.findViewById(R.id.btn_show_guide_dialog);
         btnShowGuideDialog.setOnClickListener(this);
 
+        BlockButton btnShowCustomDialog = (BlockButton) findViewById(R.id.btn_show_custom_dialog);
+        btnShowCustomDialog.setOnClickListener(this);
+
+        BlockButton btnShowLongCustomDialog = (BlockButton) findViewById(R.id.btn_show_long_custom_dialog);
+        btnShowLongCustomDialog.setOnClickListener(this);
+
         textChangeEnabled = (TextView) layoutMain.findViewById(R.id.text_btn_change_enabled);
 
         btnResetGuidePref = (BlockButton) layoutMain.findViewById(R.id.btn_reset_guide);
@@ -101,13 +107,15 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
         switch ( view.getId() ) {
             case R.id.btn_show_basic_dialog:
                 new SimpleDialog.Builder(thisActivity)
-                        .setContent("This is basic SimpleDialog :)")
+                        .setContent("This is basic SimpleDialog :)", 3)
                         .setBtnConfirmText("Check!")
                         .setBtnConfirmTextColor("#de413e")
+                        .setBtnCancelText("Cancel")
+                        .setBtnCancelTextColor("#de413e")
 
                         // Customizing
 
-                        //.setTitle("Hello !", true)
+                        .setTitle("Hello !")
                         //.setCancelable(true)          // Default value is false
                         //.onConfirm(new SimpleDialog.BtnCallback() {
                         //    @Override
@@ -127,8 +135,12 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.btn_show_progress_dialog:
                 new SimpleDialog.Builder(thisActivity)
-                        .setContent("This is progress SimpleDialog :)")
+                        .setContent("This is progress SimpleDialog :)", 7)
                         .setProgressGIF(R.raw.simple_dialog_progress_default)
+//                        .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
+//                        .setBtnConfirmText("Check!")
+//                        .setBtnConfirmTextSizeDp(15)
+//                        .setBtnConfirmTextColor("#de413e")
                         .setBtnCancelText("Cancel")
                         .setBtnCancelTextColor("#2861b0")
 
@@ -153,17 +165,16 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         .setContent("This is guide SimpleDialog :)\n\n- You can pinch the view !")
                         .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
                         .setGuideImageSizeDp(150, 150)
-                        .setPreferenceName(Pref.PREFERENCE_NAME)
-                        .setPermanentCheckKey(Pref.KEY_FIRST_WELCOME)
-                        .onConfirmWithPermanentCheck(new SimpleDialog.BtnCallback() {
+                        .setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_FIRST_WELCOME)
+                        .onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
                             @Override
-                            public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                                setBtnGuideReset(true);
+                            public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which, boolean isPermanentChecked) {
+                                if( isPermanentChecked )
+                                    setBtnGuideReset(true);
                             }
                         })
                         .setBtnConfirmText("Check!")
                         .setBtnConfirmTextColor("#e6b115")
-
                         // Customizing
 
                         //.setTitle("Hello !", true)
@@ -173,6 +184,34 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         .showIfPermanentValueIsFalse();
                 break;
 
+            case R.id.btn_show_custom_dialog:
+                new SimpleDialog.Builder(thisActivity)
+                        // If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
+                        .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
+                        .setBtnConfirmText("Check!")
+                        .setBtnCancelText("Cancel", false)
+                        .setBtnCancelTextColor("#777777")
+
+                        // Customizing
+
+                        // .setBtnConfirmTextColor("#de413e")
+                        // .setTitle("This is Title :)")
+                        // .setBtnConfirmTextSizeDp(15)
+                        .show();
+                break;
+
+            case R.id.btn_show_long_custom_dialog:
+                new SimpleDialog.Builder(thisActivity)
+                        .setTitle("This is Title :)")
+                        // If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
+                        .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom_long)
+                        .setBtnConfirmText("Check!")
+                        .setBtnConfirmTextSizeDp(16)
+                        .setBtnConfirmTextColor("#1fd1ab")
+                        .setBtnCancelText("Cancel", false)
+                        .setBtnCancelTextColor("#555555")
+                        .show();
+                break;
 
         }
     }

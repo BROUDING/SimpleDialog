@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:gravity="center"
     android:orientation="vertical"
-    android:id="@+id/layout_main"
-    tools:context="com.brouding.blockbuttonsample.SampleActivity">
+    android:id="@+id/layout_main">
 
     <com.brouding.blockbutton.BlockButton
         app:pushDepthDp="6"
@@ -46,7 +44,7 @@
         android:id="@+id/btn_show_progress_dialog"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -72,7 +70,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -81,7 +79,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <com.brouding.blockbutton.BlockButton
-                app:pushDepthDp="2"
+                app:pushDepthDp="3"
                 app:buttonColor="#e6b115"
                 app:buttonGapColor="#755a0f"
                 android:id="@+id/btn_show_guide_dialog"
@@ -107,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#333333"
-                android:text="pushDepthDp = 2"/>
+                android:text="pushDepthDp = 3"/>
         </LinearLayout>
 
         <LinearLayout
@@ -117,7 +115,7 @@
             android:layout_marginStart="20dp"
             android:orientation="vertical">
             <com.brouding.blockbutton.BlockButton
-                app:pushDepthDp="2"
+                app:pushDepthDp="3"
                 app:buttonColor="#58ad26"
                 app:buttonGapColor="#37661b"
                 app:buttonDisabledColor="#999999"
@@ -150,6 +148,69 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <com.brouding.blockbutton.BlockButton
+            android:id="@+id/btn_show_custom_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:buttonColor="#1fd1ab"
+            app:buttonGapColor="#1a7d68"
+            app:pushDepthDp="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
+                android:paddingTop="10dp"
+                android:text="Show\nCustomDialog"
+                android:textColor="#ffffff"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+        </com.brouding.blockbutton.BlockButton>
+
+        <com.brouding.blockbutton.BlockButton
+            android:id="@+id/btn_show_long_custom_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:buttonColor="#1fd1ab"
+            app:buttonGapColor="#1a7d68"
+            app:pushDepthDp="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="10dp"
+                android:text="Show\nLongCustomDialog"
+                android:textColor="#ffffff"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+
+        </com.brouding.blockbutton.BlockButton>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:text="pushDepthDp = 2"/>
 
 
     <TextView

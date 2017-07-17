@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cccccc"
+    android:layout_margin="15dp"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:text="How can I use BlockButton ?"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#333333"
+        android:textSize="15dp"
+        android:text="BlockButton is a view  that extends LinearLayout. I'm thinking of extending RelativeLayout as well and release it."/>
+
+</LinearLayout>
