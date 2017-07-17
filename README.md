@@ -37,8 +37,8 @@ new SimpleDialog.Builder(thisActivity)
 
                 //.setTitle("Hello !", true)	// setTitle(String message, boolean isBold)
                 //.setCancelable(true)          // Default value is false
-								//.setBtnConfirmTextSizeDp(15)
-								//.setBtnConfirmTextColor("#de413e")
+		//.setBtnConfirmTextSizeDp(15)
+		//.setBtnConfirmTextColor("#de413e")
                 //.onConfirm(new SimpleDialog.BtnCallback() {
                 //    @Override
                 //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
@@ -66,7 +66,8 @@ new SimpleDialog.Builder(thisActivity)
 
                 // Customizing (You can find more in Wiki)
 
-                //.setBtnCancelText("Cancel", false)	// setBtnCancelText(String message, boolean isBold)
+                //.setBtnCancelText("Cancel", false)	
+		//.setBtnCancelText(String message, boolean isBold)
                 //.setBtnCancelTextColor(R.color.colorPrimary)
                 //.setBtnCancelShowTime(2000)
                 //.onCancel(new SimpleDialog.BtnCallback() {
@@ -87,14 +88,14 @@ new SimpleDialog.Builder(thisActivity)
                 .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
                 .setGuideImageSizeDp(150, 150)
                 .setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_FIRST_WELCOME)
-								.onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
+		.onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
                     @Override
                     public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which, boolean isPermanentChecked) {
                         if( isPermanentChecked )
                             setBtnGuideReset(true);
                     }
                 })
-								// I thought cancel button is not necessary, it's unavailable unless there're requests
+		// I thought cancel button is not necessary, it's unavailable unless there're requests
                 .setBtnConfirmText("Check!")
                 .setBtnConfirmTextColor("#e6b115")
 
@@ -117,26 +118,26 @@ new SimpleDialog.Builder(thisActivity)
 ### SimpleDialog - CustomView
 ```java
 new SimpleDialog.Builder(thisActivity)
-								.setTitle("This is Title :)")
-								// If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
-								.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom_long)
-								.setBtnConfirmText("Check!")
-								.setBtnConfirmTextSizeDp(16)
-								.setBtnConfirmTextColor("#1fd1ab")
-								.setBtnCancelText("Cancel", false)
-								.setBtnCancelTextColor("#555555")
+		.setTitle("This is Title :)")
+		// If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
+		.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom_long)
+		.setBtnConfirmText("Check!")
+		.setBtnConfirmTextSizeDp(16)
+		.setBtnConfirmTextColor("#1fd1ab")
+		.setBtnCancelText("Cancel", false)
+		.setBtnCancelTextColor("#555555")
 
                 // Customizing (You can find more in Wiki)
 
-								//.setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_PERMANENT_GUIDE_MAIN)
+		//.setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_PERMANENT_GUIDE_MAIN)
                 //.setBtnPermanentCheckText("Don't show again", true)
-								//.onConfirm(new SimpleDialog.BtnCallback() {
+		//.onConfirm(new SimpleDialog.BtnCallback() {
                 //    @Override
                 //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
                 //        // Do something
                 //    }
                 //})
-								// If permanentCheck is unnecessary, you can use >> .show();
+		// If permanentCheck is unnecessary, you can use >> .show();
                 .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
 ```
 ---
@@ -145,7 +146,7 @@ License
 
     Copyright 2017 SimpleDialog authors.
 
-		- Jeongwon Lee (ssyjk2@gmail.com)
+	- Jeongwon Lee (ssyjk2@gmail.com)
 
     All rights reserved.
 
