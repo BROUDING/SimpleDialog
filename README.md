@@ -21,124 +21,112 @@ add below code in `build.gradle (Module: app)`
 ```gradle
 dependencies {
 	// ... other dependencies here
-    compile 'com.brouding:android-simple-dialog:0.2.5.1'
+    compile 'com.brouding:android-simple-dialog:0.3.0'
 }
 ```
 
-# How to use (Wiki will be updated !)
+# How to use ( Find more in [`Wiki`](https://github.com/BROUDING/SimpleDialog/wiki) )
 ### SimpleDialog - Basic
+[<b>Click here for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#basic-dialog)
 ```java
-new SimpleDialog.Builder(thisActivity)
-                .setContent("This is basic SimpleDialog :)")
-                .setBtnConfirmText("Check!")
-                .setBtnConfirmTextColor("#de413e")
+new SimpleDialog.Builder(thisActivity)new SimpleDialog.Builder(thisActivity)
+                        .setContent("This is basic SimpleDialog :)", 3)
+                        //.setBtnConfirmText("Check!")
+                        .setBtnConfirmTextColor("#de413e")
+                        //.setBtnCancelText("Cancel")
+                        .setBtnCancelTextColor("#de413e")
 
-                // Customizing (You can find more in Wiki)
+                        // Customizing (You can find more in Wiki)
 
-                //.setTitle("Hello !", true)	// setTitle(String message, boolean isBold)
-                //.setCancelable(true)          // Default value is false
-		//.setBtnConfirmTextSizeDp(15)
-		//.setBtnConfirmTextColor("#de413e")
-                //.onConfirm(new SimpleDialog.BtnCallback() {
-                //    @Override
-                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                //        // Do something
-                //    }
-                //})
-                //.setBtnCancelText("Cancel", false)	// setBtnCancelText(String message, boolean isBold)
-                //.onCancel(new SimpleDialog.BtnCallback() {
-                //    @Override
-                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                //        // Do something
-                //    }
-                //})
-                .show();  // Must be called at the end
+                        .setTitle("Hello !")
+                        //.setCancelable(true)          // Default value is false
+                        //.onConfirm(new SimpleDialog.BtnCallback() {
+                        //    @Override
+                        //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                        //        // Do something
+                        //    }
+                        //})
+                        //.setBtnCancelText("Cancel", false)
+                        //.onCancel(new SimpleDialog.BtnCallback() {
+                        //    @Override
+                        //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                        //        // Do something
+                        //    }
+                        //})
+                        .show();  // Must be called at the end
 ```
 
 ### SimpleDialog - Progress
+[<b>Click here for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#progress-dialog)
 ```java
 new SimpleDialog.Builder(thisActivity)
-		// I thought ProgressDialog doesn't need setTitle, it's unavailable unless there're requests
-                .setContent("This is progress SimpleDialog :)")
-                .setProgressGIF(R.raw.simple_dialog_progress_default)	// If you use this, setProgress(true) is not necessary
-                .setBtnCancelText("Cancel")
-                .setBtnCancelTextColor("#2861b0")
+                        .setContent("This is progress SimpleDialog :)", 7)
+                        .setProgressGIF(R.raw.simple_dialog_progress_default)
+                        //.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
+                        //.setBtnConfirmText("Check!")
+                        //.setBtnConfirmTextSizeDp(15)
+                        //.setBtnConfirmTextColor("#de413e")
+                        //.setBtnCancelText("Cancel")
+                        .setBtnCancelTextColor("#2861b0")
 
-                // Customizing (You can find more in Wiki)
+                        // Customizing (You can find more in Wiki)
 
-                //.setBtnCancelText("Cancel", false)	
-		//.setBtnCancelText(String message, boolean isBold)
-                //.setBtnCancelTextColor(R.color.colorPrimary)
-                //.setBtnCancelShowTime(2000)
-                //.onCancel(new SimpleDialog.BtnCallback() {
-                //    @Override
-                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                //        // thisActivity.finish();
-                //    }
-                //})
-                //.showProgress(true)
-                .show();  // Must be called at the end
+                        //.setBtnCancelText("Cancel", false)
+                        //.setBtnCancelTextColor(R.color.colorPrimary)
+                        //.setBtnCancelShowTime(2000)
+                        //.onCancel(new SimpleDialog.BtnCallback() {
+                        //    @Override
+                        //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                        //        // thisActivity.finish();
+                        //    }
+                        //})
+                        //.showProgress(true)
+                        .show();  // Must be called at the end
 ```
 
 ### SimpleDialog - Guide
+[<b>Click here for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#guide-dialog)
 ```java
 new SimpleDialog.Builder(thisActivity)
-                .setTitle("Hello !")      // Default text will be set Bold, Not necessary
-                .setContent("This is guide SimpleDialog :)\n\n- You can pinch the view !")
-                .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
-                .setGuideImageSizeDp(150, 150)
-                .setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_FIRST_WELCOME)
-		.onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
-                    @Override
-                    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which, boolean isPermanentChecked) {
-                        if( isPermanentChecked )
-                            setBtnGuideReset(true);
-                    }
-                })
-		// I thought cancel button is not necessary, it's unavailable unless there're requests
-                .setBtnConfirmText("Check!")
-                .setBtnConfirmTextColor("#e6b115")
+                        .setTitle("Hello !", true)      // Not necessary
+                        .setContent("This is guide SimpleDialog :)\n\n- You can pinch the view !")
+                        .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
+                        .setGuideImageSizeDp(150, 150)
+                        .setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_FIRST_WELCOME)
+                        .onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
+                            @Override
+                            public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which, boolean isPermanentChecked) {
+                                if( isPermanentChecked )
+                                    setBtnGuideReset(true);
+                            }
+                        })
+                        // I thought cancel button is not necessary, it's unavailable unless there're requests
+                        .setBtnConfirmText("Check!")
+                        .setBtnConfirmTextColor("#e6b115")
 
-                // Customizing (You can find more in Wiki)
 
-                //.setTitle("Hello !", false)
-                //.setBtnPermanentCheckText("Don't show again", true)
-                //.setGuideImagePaddingDp(10)
-                //.setGuideImageSizeDp(100, 100)
-								//.onConfirm(new SimpleDialog.BtnCallback() {
-                //    @Override
-                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                //        // Do something
-                //    }
-                //})
-		// If permanentCheck is unnecessary, you can use >> .show();
-                .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
+                        // Customizing (You can find more in Wiki)
+
+                        //.setTitle("Hello !", true)
+                        //.setBtnPermanentCheckText("다시 보지 않기", true)
+                        //.setGuideImagePaddingDp(10)
+                        //.setGuideImageSizeDp(100, 100)
+                        .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
 ```
 
 ### SimpleDialog - CustomView
+[<b>Click here for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#custom-dialog)
 ```java
 new SimpleDialog.Builder(thisActivity)
-		.setTitle("This is Title :)")
-		// If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
-		.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom_long)
-		.setBtnConfirmText("Check!")
-		.setBtnConfirmTextSizeDp(16)
-		.setBtnConfirmTextColor("#1fd1ab")
-		.setBtnCancelText("Cancel", false)
-		.setBtnCancelTextColor("#555555")
-
-                // Customizing (You can find more in Wiki)
-
-		//.setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_PERMANENT_GUIDE_MAIN)
-                //.setBtnPermanentCheckText("Don't show again", true)
-		//.onConfirm(new SimpleDialog.BtnCallback() {
-                //    @Override
-                //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
-                //        // Do something
-                //    }
-                //})
-		// If permanentCheck is unnecessary, you can use >> .show();
-                .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
+                        .setTitle("This is Title :)")
+                        // If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
+                        .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom_long)
+                        .setBtnConfirmText("Check!")
+                        .setBtnConfirmTextSizeDp(16)
+                        .setBtnConfirmTextColor("#1fd1ab")
+                        .setBtnCancelText("Cancel", false)
+                        .setBtnCancelTextColor("#555555")
+                        .show();
 ```
 ---
 License

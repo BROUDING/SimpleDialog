@@ -24,6 +24,8 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
     private BlockButton btnResetGuidePref;
     private TextView textChangeEnabled;
 
+    private SimpleDialog mCustomDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,12 +110,12 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_show_basic_dialog:
                 new SimpleDialog.Builder(thisActivity)
                         .setContent("This is basic SimpleDialog :)", 3)
-                        .setBtnConfirmText("Check!")
+                        //.setBtnConfirmText("Check!")
                         .setBtnConfirmTextColor("#de413e")
-                        .setBtnCancelText("Cancel")
+                        //.setBtnCancelText("Cancel")
                         .setBtnCancelTextColor("#de413e")
 
-                        // Customizing
+                        // Customizing (You can find more in Wiki)
 
                         .setTitle("Hello !")
                         //.setCancelable(true)          // Default value is false
@@ -137,14 +139,14 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                 new SimpleDialog.Builder(thisActivity)
                         .setContent("This is progress SimpleDialog :)", 7)
                         .setProgressGIF(R.raw.simple_dialog_progress_default)
-//                        .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
-//                        .setBtnConfirmText("Check!")
-//                        .setBtnConfirmTextSizeDp(15)
-//                        .setBtnConfirmTextColor("#de413e")
+                        //.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
+                        //.setBtnConfirmText("Check!")
+                        //.setBtnConfirmTextSizeDp(15)
+                        //.setBtnConfirmTextColor("#de413e")
                         .setBtnCancelText("Cancel")
                         .setBtnCancelTextColor("#2861b0")
 
-                        // Customizing
+                        // Customizing (You can find more in Wiki)
 
                         //.setBtnCancelText("Cancel", false)
                         //.setBtnCancelTextColor(R.color.colorPrimary)
@@ -173,30 +175,41 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                     setBtnGuideReset(true);
                             }
                         })
+                        // I thought cancel button is not necessary, it's unavailable unless there're requests
                         .setBtnConfirmText("Check!")
                         .setBtnConfirmTextColor("#e6b115")
-                        // Customizing
+
+
+                        // Customizing (You can find more in Wiki)
 
                         //.setTitle("Hello !", true)
                         //.setBtnPermanentCheckText("다시 보지 않기", true)
                         //.setGuideImagePaddingDp(10)
                         //.setGuideImageSizeDp(100, 100)
-                        .showIfPermanentValueIsFalse();
+                        .showIfPermanentValueIsFalse();  // Must be called at the end (if permanentCheck is necessary)
                 break;
 
             case R.id.btn_show_custom_dialog:
-                new SimpleDialog.Builder(thisActivity)
+                mCustomDialog = new SimpleDialog.Builder(thisActivity)
                         // If the customView is long enough, SimpleDialog will put your layout in the ScrollView automatically
                         .setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
                         .setBtnConfirmText("Check!")
                         .setBtnCancelText("Cancel", false)
                         .setBtnCancelTextColor("#777777")
 
-                        // Customizing
+
+                        // Customizing (You can find more in Wiki)
 
                         // .setBtnConfirmTextColor("#de413e")
                         // .setTitle("This is Title :)")
                         // .setBtnConfirmTextSizeDp(15)
+                        //.onConfirm(new SimpleDialog.BtnCallback() {
+                        //    @Override
+                        //    public void onClick(@NonNull SimpleDialog dialog, @NonNull SimpleDialog.BtnAction which) {
+                        //        TextView mView = (TextView)mCustomDialog.getCustomView().findViewById(R.id.text_blockbutton);
+                        //        mView.setText("????");
+                        //    }
+                        //})
                         .show();
                 break;
 
