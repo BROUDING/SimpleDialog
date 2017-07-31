@@ -109,15 +109,15 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
         switch ( view.getId() ) {
             case R.id.btn_show_basic_dialog:
                 new SimpleDialog.Builder(thisActivity)
+                        .setTitle("Hello !")
                         .setContent("This is basic SimpleDialog :)", 3)
-                        //.setBtnConfirmText("Check!")
-                        .setBtnConfirmTextColor("#de413e")
-                        //.setBtnCancelText("Cancel")
-                        .setBtnCancelTextColor("#de413e")
 
                         // Customizing (You can find more in Wiki)
 
-                        .setTitle("Hello !")
+                        //.setBtnConfirmText("Check!")
+                        //.setBtnConfirmTextColor("#de413e")
+                        //.setBtnCancelText("Cancel")
+                        //.setBtnCancelTextColor("#de413e")
                         //.setCancelable(true)          // Default value is false
                         //.onConfirm(new SimpleDialog.BtnCallback() {
                         //    @Override
@@ -132,17 +132,15 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         //        // Do something
                         //    }
                         //})
-                        .show();
+                        .show();    // Must be called at the end
                 break;
 
             case R.id.btn_show_progress_dialog:
                 new SimpleDialog.Builder(thisActivity)
                         .setContent("This is progress SimpleDialog :)", 7)
-                        .setProgressGIF(R.raw.simple_dialog_progress_default)
-                        //.setCustomView(R.layout.brouding_simple_dialog_test_layout_custom)
-                        //.setBtnConfirmText("Check!")
-                        //.setBtnConfirmTextSizeDp(15)
-                        //.setBtnConfirmTextColor("#de413e")
+                        // .showProgress must be set true if you want ProgressDialog
+                        .showProgress(true)     // Default GIF is in the library (R.raw.simple_dialog_progress_default)
+                        //.setProgressGIF(R.raw.simple_dialog_progress_default)
                         .setBtnCancelText("Cancel")
                         .setBtnCancelTextColor("#2861b0")
 
@@ -158,14 +156,14 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                         //    }
                         //})
                         //.showProgress(true)
-                        .show();
+                        .show();    // Must be called at the end
                 break;
 
             case R.id.btn_show_guide_dialog:
                 new SimpleDialog.Builder(thisActivity)
-                        .setTitle("Hello !", true)      // Not necessary
+                        .setTitle("Hello !", true)
                         .setContent("This is guide SimpleDialog :)\n\n- You can pinch the view !")
-                        .setGuideImage(R.drawable.image_guide_pinch)    // Not necessary
+                        .setGuideImage(R.drawable.image_guide_pinch)
                         .setGuideImageSizeDp(150, 150)
                         .setPermanentCheck(Pref.PREFERENCE_NAME, Pref.KEY_FIRST_WELCOME)
                         .onConfirm(new SimpleDialog.BtnCallbackWithPermanentCheck() {
@@ -175,9 +173,9 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                     setBtnGuideReset(true);
                             }
                         })
-                        // I thought cancel button is not necessary, it's unavailable unless there're requests
                         .setBtnConfirmText("Check!")
                         .setBtnConfirmTextColor("#e6b115")
+                        // I thought cancel button is not necessary, it's unavailable unless there're requests
 
 
                         // Customizing (You can find more in Wiki)
