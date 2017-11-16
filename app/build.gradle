@@ -30,8 +30,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${SUPPORT_V7_VERSION}"
+    compile "com.android.support:support-v4:${SUPPORT_V4_VERSION}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.andkulikov:transitionseverywhere:1.7.4'
+    compile 'com.andkulikov:transitionseverywhere:1.7.7'
     compile 'com.brouding:android-block-button:0.1.2.1'
     compile project(":simpledialog")
     testCompile 'junit:junit:4.12'

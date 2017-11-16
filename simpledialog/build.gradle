@@ -5,7 +5,7 @@ publish {
     userOrg = 'brouding'
     groupId = 'com.brouding'
     artifactId = 'android-simple-dialog'
-    publishVersion = '0.3.0'
+    publishVersion = '0.3.0.1'
     desc = 'Android Simple Dialog'
     website = 'https://github.com/BROUDING/SimpleDialog'
     issueTracker = "https://github.com/BROUDING/SimpleDialog/issues"
@@ -43,7 +43,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${SUPPORT_V7_VERSION}"
-    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
-    compile 'com.andkulikov:transitionseverywhere:1.7.4'
+    compile "com.android.support:support-v4:${SUPPORT_V4_VERSION}"
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    compile 'com.andkulikov:transitionseverywhere:1.7.7'
     testCompile 'junit:junit:4.12'
 }

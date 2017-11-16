@@ -22,7 +22,7 @@ add below code in `build.gradle (Module: app)`
 ```gradle
 dependencies {
 	// ... other dependencies here
-    compile 'com.brouding:android-simple-dialog:0.3.0'
+    compile 'com.brouding:android-simple-dialog:0.3.0.1'
 }
 ```
 ---
@@ -159,7 +159,7 @@ public class App extends Application {
                 break;
 
 				case Const.NO_NETWORK:
-          				new SimpleDialog.Builder(thisActivity)
+          			new SimpleDialog.Builder(thisActivity)
                         .setContent("Network connection is unstable")
                         .setBtnConfirmText("Check")
                         .onConfirm(new SimpleDialog.BtnCallback() {
