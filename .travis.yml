@@ -4,6 +4,7 @@ jdk: oraclejdk8
 android:
   components:
     - tools
+    - tools
     - platform-tools
     - build-tools-26.0.2
     - android-26
@@ -13,8 +14,11 @@ android:
     - extra-google-m2repository
 
     # Additional components
-    #- extra-google-google_play_services
+    - extra-google-google_play_services
     #- addon-google_apis-google-19
+
+    - addon-google_apis-google-26
+    - addon-google_apis-google-22
 
     # Specify at least one system image, if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-google_apis-22
