@@ -1,87 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_container"
-    android:background="#08000000"
-    android:orientation="vertical">
+    android:background="#08000000">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/layoutDialog"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:background="@drawable/brouding_simple_dialog_bg_round_white"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+        app:layout_constraintStart_toEndOf="@id/guidelineStart"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.08" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="1dp"
+            android:textColor="#333333"
+            android:textSize="19dp"
+            android:visibility="gone"
+            tools:text="Header :)"
+            tools:visibility="visible" />
 
-        <LinearLayout
-            android:id="@+id/layout_dialog"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtContent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.84"
-            android:background="@drawable/brouding_simple_dialog_bg_round_white"
-            android:orientation="vertical">
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:gravity="center_vertical"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="0dp"
+            android:textColor="#777777"
+            android:textSize="15dp"
+            tools:text="Hello World !" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="22dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txt_title"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:lineSpacingExtra="1dp"
-                    android:text="Header :)"
-                    android:textColor="#333333"
-                    android:textSize="19dp" />
-
-                <TextView
-                    android:id="@+id/txt_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:gravity="center_vertical"
-                    android:letterSpacing="-0.03"
-                    android:lineSpacingExtra="0dp"
-                    android:text="Hello World !"
-                    android:textColor="#777777"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/image_guide"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:padding="18dp"
-                android:scaleType="fitCenter"/>
-
-            <include layout="@layout/brouding_simple_dialog_include_buttons"
-                android:id="@+id/layout_button_views"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_button_views_height"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.08" />
+        <include
+            android:id="@+id/layoutBtns"
+            layout="@layout/brouding_simple_dialog_include_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_button_views_height"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp" />
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

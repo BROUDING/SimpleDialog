@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="end"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/btn_check_permanent"
+        android:id="@+id/btnCheckPermanent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:gravity="center_vertical"
         android:background="@drawable/brouding_simple_dialog_btn_selector"
-        android:visibility="gone"
-        android:orientation="horizontal"
-        android:layout_gravity="start">
+        android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/check_permanent"
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkBoxPermanent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:theme="@style/checkBoxStyle"/>
 
-        <TextView
-            android:id="@+id/text_btn_permanent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtBtnPermanent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -34,60 +37,45 @@
             android:textColor="#000000"
             android:textSize="13dp"
             android:text="Don't show again"/>
-
     </LinearLayout>
 
-    <View
-        android:id="@+id/view_gap"
-        android:layout_width="0dp"
-        android:layout_weight="0.1"
-        android:layout_height="match_parent"
-        android:visibility="visible" />
-
-    <LinearLayout
-        android:id="@+id/btn_cancel"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnConfirm"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
+        android:background="@drawable/brouding_simple_dialog_btn_selector"
+        android:text="Check"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnConfirm"
         android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:gravity="center"
         android:background="@drawable/brouding_simple_dialog_btn_selector"
-        android:layout_gravity="right" >
+        android:text="Cancel"
+        android:textColor="#999999"
+        android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/text_btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="#999999"
-            android:textSize="14dp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/btn_okay"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_marginLeft="5dp"
-        android:gravity="center"
-        android:background="@drawable/brouding_simple_dialog_btn_selector"
-        android:layout_gravity="right" >
-
-        <TextView
-            android:id="@+id/text_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Check"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

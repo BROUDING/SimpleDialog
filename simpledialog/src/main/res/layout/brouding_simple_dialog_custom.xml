@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout_container"
     android:background="#08000000"
     android:orientation="vertical">
 
@@ -18,50 +19,71 @@
             android:layout_weight="0.08" />
 
         <LinearLayout
-            android:id="@+id/layout_dialog"
+            android:id="@+id/layoutDialog"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.84"
-            android:paddingTop="10dp"
             android:background="@drawable/brouding_simple_dialog_bg_round_white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
             <LinearLayout
-                android:id="@+id/layout_title_content_container"
+                android:id="@+id/layoutTitleContentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:paddingTop="22dp"
+                android:orientation="vertical"
                 android:paddingLeft="25dp"
+                android:paddingTop="22dp"
                 android:paddingRight="25dp"
-                android:orientation="vertical">
+                android:visibility="gone">
 
-                <TextView
-                    android:id="@+id/txt_title"
-                    android:visibility="gone"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="1dp"
-                    android:text="Header :)"
+                    tools:text="Header :)"
                     android:textColor="#333333"
-                    android:textSize="19dp" />
+                    android:textSize="19dp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:gravity="center_vertical"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="0dp"
+                    tools:text="Hello World !"
+                    android:textColor="#777777"
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
             <ScrollView
-                android:id="@+id/layout_custom"
+                android:id="@+id/scrollViewCustom"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"/>
+                android:layout_height="0dp" />
 
-            <include layout="@layout/brouding_simple_dialog_include_buttons"
-                android:id="@+id/layout_button_views"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgGuide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:padding="18dp"
+                android:scaleType="fitCenter"/>
+
+            <include
+                android:id="@+id/layoutBtns"
+                layout="@layout/brouding_simple_dialog_include_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_button_views_height"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp" />
 
         </LinearLayout>
 
