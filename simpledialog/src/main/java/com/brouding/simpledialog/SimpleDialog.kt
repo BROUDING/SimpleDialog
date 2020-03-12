@@ -305,8 +305,10 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
     override fun onClick(v: View) {
         val tag = v.tag as BtnAction
         when (tag) {
-            BtnAction.CONFIRM ->
-                if(isPermanentSet) {
+            BtnAction.CONFIRM -> {
+                super.dismiss()
+
+                if (isPermanentSet) {
                     val builder = builder as Custom
                     if (checkbox!!.isChecked) {
                         builder.applyPermanentCheck()
@@ -316,8 +318,12 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
                         builder.btnActionCallback?.invoke(BtnAction.CONFIRM_WITHOUT_PERMANENT_CHECK)
                 } else
                     builder.btnActionCallback?.invoke(BtnAction.CONFIRM)
+            }
 
-            BtnAction.CANCEL -> builder.btnActionCallback?.invoke(BtnAction.CANCEL)
+            BtnAction.CANCEL -> {
+                super.dismiss()
+                builder.btnActionCallback?.invoke(BtnAction.CANCEL)
+            }
 
             BtnAction.DIALOG_OUTSIDE -> super.dismiss()
 
