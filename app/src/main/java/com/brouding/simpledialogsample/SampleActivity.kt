@@ -13,6 +13,7 @@ import com.brouding.simpledialog.SimpleDialog
 import com.brouding.simpledialog.builder.General
 import com.brouding.simpledialog.builder.Custom
 import com.brouding.simpledialog.builder.Loading
+import com.brouding.simpledialog.builder.Selection
 import com.brouding.simpledialog.extra.BtnAction
 import com.brouding.simpledialog.extra.DialogAction
 import com.brouding.simpledialogsample.extra.Pref
@@ -30,6 +31,7 @@ class SampleActivity : AppCompatActivity(), View.OnClickListener {
         btnShowBasicDialog.setOnClickListener(this)
         btnShowProgressDialog.setOnClickListener(this)
         btnShowGuideDialog.setOnClickListener(this)
+        btnShowListDialog.setOnClickListener(this)
         btnShowCustomDialog.setOnClickListener(this)
         btnShowLongCustomDialog.setOnClickListener(this)
 
@@ -131,6 +133,18 @@ class SampleActivity : AppCompatActivity(), View.OnClickListener {
                 //.setBtnCancelTextColor(R.color.colorPrimary)
                 //.setBtnCancelShowTime(2000)
                 ).show() // Must be called at the end
+            R.id.btnShowListDialog ->
+                SimpleDialog( Selection(this)
+                    .applyGeneral {
+                        setTitle("HELLO !!!")
+                        setCancelable(true)
+                    }
+                    .setContentList( listOf("AAAA", "BBB", "CC") )
+                    .onSelect {
+                        Log.e("@@# option = ", "" +it)
+                    }
+                ).show()
+
             R.id.btnShowGuideDialog ->
                 SimpleDialog( Custom(this)
                     .applyGeneral {

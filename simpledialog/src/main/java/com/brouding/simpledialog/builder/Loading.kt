@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.IntRange
 import androidx.annotation.RawRes
 import com.brouding.simpledialog.BtnActionCallback
+import com.brouding.simpledialog.extra.Type
 
 class Loading(override val context: Context): General(context) {
     var btnCancelShowTime = 2500

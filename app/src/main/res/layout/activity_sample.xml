@@ -67,6 +67,36 @@
         android:textColor="#333333"
         android:text="pushDepthDp = 4"/>
 
+    <com.brouding.blockbutton.BlockButton
+        app:pushDepthDp="3"
+        app:buttonColor="#0EAE31"
+        app:buttonGapColor="#097621"
+        android:id="@+id/btnShowListDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:text="Show ListDialog" />
+
+    </com.brouding.blockbutton.BlockButton>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:text="pushDepthDp = 3"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

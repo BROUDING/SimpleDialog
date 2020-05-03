@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="option"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/btnOption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/brouding_simple_dialog_btn_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="14dp"
+        android:paddingBottom="15dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#777777"
+            android:textSize="15dp"
+            tools:text="Option 01"
+            android:text="@{option}"/>
+
+    </LinearLayout>
+
+</layout>

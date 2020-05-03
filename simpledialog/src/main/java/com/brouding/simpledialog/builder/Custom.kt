@@ -11,6 +11,8 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.UiThread
 import com.brouding.simpledialog.BtnActionCallback
 import com.brouding.simpledialog.SimpleDialog
+import com.brouding.simpledialog.extensions.inDp
+import com.brouding.simpledialog.extra.Type
 
 
 class Custom(override val context: Context) : General(context) {
@@ -44,13 +46,13 @@ class Custom(override val context: Context) : General(context) {
 
     fun setGuideImage(@DrawableRes imageId: Int, @IntRange paddingDP: Int?): Custom {
         guideImageId = imageId
-        guideImagePadding = getPXWithDP(paddingDP)
+        paddingDP?.let { guideImagePadding = context.inDp(paddingDP) }
         return this
     }
 
     fun setGuideImageSizeDp(@IntRange width: Int?, @IntRange height: Int?): Custom {
-        guideImageWidth = getPXWithDP(width)
-        guideImageHeight = getPXWithDP(height)
+        width?.let { guideImageWidth = context.inDp(width) }
+        height?.let { guideImageHeight = context.inDp(height) }
         return this
     }
 

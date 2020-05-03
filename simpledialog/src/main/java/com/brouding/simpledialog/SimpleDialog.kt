@@ -15,18 +15,19 @@ import androidx.annotation.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.getColor
 import androidx.transition.TransitionManager
-import com.brouding.simpledialog.builder.General
-import com.brouding.simpledialog.builder.General.Type.*
-import com.brouding.simpledialog.builder.Custom
-import com.brouding.simpledialog.builder.Loading
+import com.brouding.simpledialog.builder.*
 import com.brouding.simpledialog.extra.BtnAction
 import com.brouding.simpledialog.extra.DialogAction
+import com.brouding.simpledialog.extra.Type
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.brouding_simple_dialog_default.*
+import kotlinx.android.synthetic.main.brouding_simple_dialog_default.txtTitle
 import kotlinx.android.synthetic.main.brouding_simple_dialog_include_buttons.*
+import kotlinx.android.synthetic.main.brouding_simple_dialog_selection.*
 
 typealias BtnActionCallback = (BtnAction) -> Unit
 typealias DialogActionCallback = (DialogAction) -> Unit
+typealias SelectionCallback = (String) -> Unit
 
 @SuppressLint("InflateParams")
 class SimpleDialog
@@ -148,7 +149,7 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
     @UiThread
     private fun setLayout(builder: General) {
         when (builder.type) {
-            GENERAL -> {
+            Type.GENERAL -> {
                 setContentView(R.layout.brouding_simple_dialog_default)
                 transitionsContainer = findViewById(R.id.layoutDialog)
 
@@ -171,7 +172,7 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
                 setBtnConfirm()
             }
 
-            LOADING -> {
+            Type.LOADING -> {
                 val loadingBuilder = builder as Loading
                 setContentView(R.layout.brouding_simple_dialog_loading)
                 transitionsContainer = findViewById(R.id.layoutDialog)
@@ -199,7 +200,29 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
                 setBtnCancel()
             }
 
-            CUSTOM -> {
+            Type.SELECTION -> {
+                val selectionBuilder = builder as Selection
+                setContentView(R.layout.brouding_simple_dialog_selection)
+                transitionsContainer = findViewById(R.id.layoutDialog)
+
+                selectionBuilder.textTitle?.let {
+                    setTitle(it, selectionBuilder.titleTextColor)
+                }
+
+                selectionBuilder.selectionList?.let { dataList ->
+                    listOfData.adapter = SelectionAdapter(object: SelectionAdapter.OnSelectListener {
+                        override fun onSelect(option: String) {
+                            selectionBuilder.selectionCallback?.invoke(option)
+                            dismiss()
+                        }
+                    }, selectionBuilder.paddingLeftDp)
+                    listOfData.setHasFixedSize(true)
+
+                    (listOfData.adapter as SelectionAdapter).submitList(dataList.toMutableList())
+                }
+            }
+
+            Type.CUSTOM -> {
                 setContentView(R.layout.brouding_simple_dialog_custom)  // NOT_AGAIN = setContentView(R.layout.brouding_simple_dialog_default)
                 transitionsContainer = findViewById(R.id.layoutDialog)
 
@@ -336,7 +359,7 @@ constructor(private val builder: General) : Dialog(builder.context, R.style.Tran
 
     private val isPermanentSet: Boolean
         get() = when(builder.type) {
-                CUSTOM -> {
+                Type.CUSTOM -> {
                     val builder = builder as Custom
                     builder.isPermanentSet()
                 }

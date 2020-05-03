@@ -45,8 +45,8 @@ SimpleDialog( General(thisContext)
 
 
 ### SimpleDialog - Loading
-[<b>Click <u>here</u> for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#progress-dialog)
-###### [Want to make custom GIF?](https://loading.io/)
+[<b>Click <u>here</u> for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#loading-dialog)
+###### [Want to make some custom GIF?](https://loading.io/)
 (Don't forget to keep it in `res/raw`)
 ```java
 // Default GIF is in the library (R.raw.simple_dialog_progress_default)
@@ -56,12 +56,28 @@ SimpleDialog( Loading(thisContext)
 		setBtnCancelText("Cancel")
 		setBtnCancelTextColor("#2861b0")
 		onBtnAction {
-			Log.e("@@# which one? = ", "" +it.name)
+			Log.e("@@# which one? = ", "${it.name}")
 		}
 	}
 // Customizing (You can find more in Wiki)
 //.setProgressGIF(R.raw.simple_dialog_progress_default)
 //.setBtnCancelShowTime(2000)
+).show()    // Must be called at the end
+```
+
+
+### SimpleDialog - Selection
+[<b>Click <u>here</u> for more options</b>](https://github.com/BROUDING/SimpleDialog/wiki/How-to-use#selection-dialog)
+```java
+SimpleDialog( Selection(this)
+	.applyGeneral {
+		setTitle("HELLO !!!")
+		setCancelable(true)
+	}
+	.setContentList( listOf("AAAA", "BBB", "CC"), paddingLeftDp=7 )	// simple list of String, default paddingLeft is 14
+	.onSelect { selection ->
+		Log.e("@@# option = ", "$selection")
+	}
 ).show()    // Must be called at the end
 ```
 

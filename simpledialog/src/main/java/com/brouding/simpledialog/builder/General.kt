@@ -6,6 +6,8 @@ import androidx.annotation.*
 import androidx.annotation.IntRange
 import com.brouding.simpledialog.BtnActionCallback
 import com.brouding.simpledialog.DialogActionCallback
+import com.brouding.simpledialog.extensions.inDp
+import com.brouding.simpledialog.extra.Type
 
 open class General(open val context: Context) {
     var btnActionCallback: BtnActionCallback? = null
@@ -32,10 +34,6 @@ open class General(open val context: Context) {
     private var COLOR_PATTERN = "[#][\\w]{6}|[#][\\w]{8}"
     var tag: Any? = null
     internal var type = Type.GENERAL
-
-    enum class Type {
-        GENERAL, LOADING, CUSTOM
-    }
 
     fun setBackgroundResource(@DrawableRes resId: Int): General {
         backgroundResourceId = resId
@@ -70,7 +68,8 @@ open class General(open val context: Context) {
     ): General {
         check(message.isNotEmpty()) { "setContent - message cannot be empty !" }
         textContent = message
-        contentPaddingLeft = getPXWithDP(paddingLeftDp)
+
+        paddingLeftDp?.let { contentPaddingLeft = context.inDp(paddingLeftDp) }
         return this
     }
 
@@ -172,14 +171,4 @@ open class General(open val context: Context) {
     }
 
     open fun checkBeforeShow() {}
-
-    fun getPXWithDP(dp: Int?): Int? {
-        return if (dp == null) {
-            null
-        } else TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp.toFloat(),
-            context.resources.displayMetrics
-        ).toInt()
-    }
 }
